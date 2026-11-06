@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAASTA - Story & OST</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global Base */
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #070a12;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Animated Light Orbs for Refraction */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.45;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 18s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #3b82f6 0%, #1d4ed8 100%);
+            top: 5%;
+            left: -100px;
+        }
+        .orb-2 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #6366f1 0%, #4338ca 100%);
+            top: 45%;
+            right: -150px;
+            animation-delay: -6s;
+        }
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0ea5e9 0%, #0369a1 100%);
+            bottom: 5%;
+            left: 20%;
+            animation-delay: -12s;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, -40px) scale(1.1); }
+            100% { transform: translate(-40px, 50px) scale(0.95); }
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-radius: 1.5rem;
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(10, 14, 26, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Minimal Punchline Typography */
+        .punchline-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            word-spacing: 0.15em;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-blue-500 selection:text-white">
+
+    <!-- Ambient Glowing Light Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Fixed Glass Navigation Header -->
+    <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+        <nav class="glass-nav px-6 py-3 rounded-full flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm font-medium tracking-wide shadow-2xl">
+            <a href="#story" class="font-extrabold tracking-wider text-blue-400 text-sm sm:text-base pr-3 border-r border-white/20 hover:text-white transition-colors">RAASTA</a>
+            <a href="#story" class="hover:text-blue-400 transition-colors">Story</a>
+            <span class="text-white/20">•</span>
+            <a href="#ost" class="hover:text-blue-400 transition-colors">OST & Media</a>
+            <span class="text-white/20">•</span>
+            <a href="#toolkit" class="hover:text-blue-400 transition-colors">Toolkit</a>
+            <span class="text-white/20">•</span>
+            <a href="#credits" class="hover:text-blue-400 transition-colors">Credits</a>
+            <span class="text-white/20">•</span>
+            <a href="#punchline" class="hover:text-blue-400 transition-colors">Outro</a>
+        </nav>
+    </header>
+
+    <!-- SECTION 1: STORY -->
+    <section id="story" class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-24 max-w-4xl mx-auto">
+        
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full glass-card text-xs text-blue-300 font-medium mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+            <span>Narrative Presentation</span>
+        </div>
+
+        <h1 class="text-5xl sm:text-7xl font-black text-center tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 uppercase">
+            RAASTA
+        </h1>
+
+        <div class="glass-card p-8 sm:p-12 w-full space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+            <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-blue-400 first-letter:mr-3 first-letter:float-left">
+                In the restless crowd of Karachi, Ayan can’t shake one question: is the destination everything? When he sets out on an unknown road, the desert, the ruins and a few strangers show him what he has been searching for all along. A 10-minute Urdu short film about the journey that leads back home.
+            </p>
+        </div>
+
+        <div class="mt-8 flex justify-center">
+            <a href="#ost" class="group flex items-center space-x-2 text-sm text-slate-400 hover:text-white transition-colors">
+                <span>Scroll to Media & OST</span>
+                <svg class="w-4 h-4 transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 2: OST & MEDIA EXPERIENCE -->
+    <section id="ost" class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-24 max-w-5xl mx-auto">
+        
+        <div class="text-center mb-10">
+            <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Media Release</span>
+            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mt-2">OST & Media Experience</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-lg mx-auto">Immerse yourself in the official short film and soundtrack portraying the young boy's journey.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+            
+            <!-- Main Story Film / YT Video Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/30">Short Film</span>
+                        <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Story Video</h3>
+                    <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">
+                        Watch the full cinematic narrative of the young boy's life, perseverance, and triumph over hardship.
+                    </p>
+
+                    <!-- Embedded Story Video Player -->
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl border border-white/10 mb-6">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/VGwU1TNMO50" 
+                            title="A Boy's Journey - Short Film" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://youtu.be/VGwU1TNMO50?si=3haywYWPMV7OT_ES" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-3.5 px-6 rounded-xl glass-card text-center font-medium text-sm flex items-center justify-center space-x-2 bg-white/10 hover:bg-red-600/30 transition-all border border-white/20">
+                        <svg class="w-5 h-5 text-red-500 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <span>Open Story Video on YouTube</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Official OST Video Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30">Official Soundtrack</span>
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Official OST Video</h3>
+                    <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">
+                        Listen to the official original soundtrack that captures the emotion and spirit of the story.
+                    </p>
+
+                    <!-- Embedded OST Video Player -->
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl border border-white/10 mb-6">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/Pd8c0LKrh1c" 
+                            title="A Boy's Journey - Official OST" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://youtu.be/Pd8c0LKrh1c" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-3.5 px-6 rounded-xl glass-card text-center font-medium text-sm flex items-center justify-center space-x-2 bg-white/10 hover:bg-blue-600/30 transition-all border border-white/20">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Listen to OST on YouTube</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 3: PRODUCTION TOOLKIT & AI STACK -->
+    <section id="toolkit" class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-24 max-w-5xl mx-auto">
+        
+        <div class="text-center mb-10">
+            <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Workflow & Tech</span>
+            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mt-2">Production Toolkit</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-lg mx-auto">The AI software stack and editing suite leveraged to generate the narrative, soundtrack, visuals, and final cut.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            
+            <!-- Claude Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between border-amber-500/20">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">AI Scripting</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Claude</h3>
+                    <p class="text-slate-300 text-xs font-light leading-relaxed">
+                        Story Generation & Prompt Generation for scene narrative structure and consistency.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Suno AI Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between border-purple-500/20">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-purple-400">Audio & Music</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Suno AI</h3>
+                    <p class="text-slate-300 text-xs font-light leading-relaxed">
+                        Sound Effects & Soundtrack Generation crafting the emotive musical score.
+                    </p>
+                </div>
+            </div>
+
+            <!-- VN Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between border-emerald-500/20">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Post-Production</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">VN</h3>
+                    <p class="text-slate-300 text-xs font-light leading-relaxed">
+                        Editing & Compiling scene transitions, timing synchronization, and final rendering.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Google Flow Card -->
+            <div class="glass-card glass-card-hover p-6 flex flex-col justify-between border-cyan-500/20">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">AI Visuals</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Google Flow</h3>
+                    <p class="text-slate-300 text-xs font-light leading-relaxed">
+                        Character & Video Generation bringing visual scenes and characters to life.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 4: PROJECT CREDITS -->
+    <section id="credits" class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-24 max-w-4xl mx-auto">
+        
+        <div class="text-center mb-12">
+            <span class="text-blue-400 text-xs font-semibold uppercase tracking-widest">Acknowledgement</span>
+            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mt-2">Project Credits</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2">The team behind bringing this project to life.</p>
+        </div>
+
+        <div class="w-full space-y-8">
+            
+            <!-- Supervisor Card -->
+            <div class="glass-card p-8 sm:p-10 border-blue-500/30 relative overflow-hidden">
+                <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+                <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
+                    <div class="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-blue-400 flex-shrink-0 border border-blue-400/30">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0115.48 0M12 18.75A6 6 0 006 12.75H4.5a6 6 0 00-6 6v.75m19.5 0v-.75a6 6 0 00-6-6H18a6 6 0 00-6 6m0-6a3 3 0 100-6 3 3 0 000 6z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-blue-400 font-medium">Project Supervisor</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">Engr. Imran Alvi</h3>
+                        <p class="text-slate-400 text-sm mt-2 font-light">Providing mentorship, guidance, and strategic direction throughout the project lifecycle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Members Grid -->
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-4 text-center sm:text-left">Project Members</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    
+                    <div class="glass-card p-5 text-center glass-card-hover">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-slate-200 mx-auto mb-3 flex items-center justify-center text-xs font-bold border border-white/10">DC</div>
+                        <h5 class="font-semibold text-sm text-white">Muhammad Danish Channa</h5>
+                        <p class="text-xs text-blue-400 font-mono mt-1">26F-CS-87</p>
+                    </div>
+
+                    <div class="glass-card p-5 text-center glass-card-hover">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-slate-200 mx-auto mb-3 flex items-center justify-center text-xs font-bold border border-white/10">KA</div>
+                        <h5 class="font-semibold text-sm text-white">Muhammad Kafil Ansari</h5>
+                        <p class="text-xs text-blue-400 font-mono mt-1">26F-CS-103</p>
+                    </div>
+
+                    <div class="glass-card p-5 text-center glass-card-hover">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-slate-200 mx-auto mb-3 flex items-center justify-center text-xs font-bold border border-white/10">SA</div>
+                        <h5 class="font-semibold text-sm text-white">Muhammad Subhan Ali</h5>
+                        <p class="text-xs text-blue-400 font-mono mt-1">26F-CS-93</p>
+                    </div>
+
+                    <div class="glass-card p-5 text-center glass-card-hover">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-slate-200 mx-auto mb-3 flex items-center justify-center text-xs font-bold border border-white/10">TK</div>
+                        <h5 class="font-semibold text-sm text-white">Touseef Khan</h5>
+                        <p class="text-xs text-blue-400 font-mono mt-1">26F-CS-76</p>
+                    </div>
+
+                    <div class="glass-card p-5 text-center glass-card-hover">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-slate-200 mx-auto mb-3 flex items-center justify-center text-xs font-bold border border-white/10">SK</div>
+                        <h5 class="font-semibold text-sm text-white">Saadullah Khan SUK</h5>
+                        <p class="text-xs text-blue-400 font-mono mt-1">26F-CS-77</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SECTION 5: OUTRO & PUNCHLINE / FOOTER -->
+    <section id="punchline" class="relative z-10 min-h-[60vh] flex flex-col justify-center items-center px-4 py-24 text-center max-w-3xl mx-auto">
+        
+        <!-- Outro Glass Card -->
+        <div class="glass-card p-6 sm:p-8 mb-12 w-full text-slate-300 text-sm sm:text-base sm:leading-relaxed font-light italic border-blue-500/30 shadow-2xl">
+            “ The journey is over, but the question stays with you. Stop for a moment and look around. The answer may never have been at the destination, only under your own steps. ”
+        </div>
+
+        <div class="max-w-2xl w-full">
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mb-8"></div>
+            
+            <p class="punchline-text text-xl sm:text-3xl text-white font-bold uppercase tracking-widest drop-shadow-md">
+                “ MANZIL KO ITNA MAT DEKH K RAASTA NAZAR HI NW AYE ”
+            </p>
+            
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-8"></div>
+        </div>
+        
+        <p class="text-[11px] text-slate-500 mt-12 tracking-wider">
+            &copy; 2026 RAASTA. All Rights Reserved.
+        </p>
+    </section>
+
+</body>
+</html>
